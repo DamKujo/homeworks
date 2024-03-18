@@ -43,3 +43,19 @@ function breakDice(dice){
 
 //В функцию передаем тип dice (от d4 до d20)
 console.log(breakDice('d16'));
+
+// Блок setTimeOut setInterval
+
+const interval = setInterval(()=> {
+    let now = new Date();
+    let nextYear = new Date(`${now.getFullYear() + 1}`);
+    let almostNewYear = new Date(nextYear.getTime() - ((1000*3600*3) + 1000));
+    const difference = {
+        month: `${almostNewYear.getMonth() - now.getMonth()}`,
+        days: `${almostNewYear.getDate() - now.getDate()}`,
+        hours: `${almostNewYear.getHours() - now.getHours()}`,
+        min: `${almostNewYear.getMinutes() - now.getMinutes()}`,
+        sec: `${almostNewYear.getSeconds() - now.getSeconds()}`
+    }
+    document.getElementById('1').textContent = `${difference.month} month, ${difference.days} days, ${difference.hours} hours, ${difference.min} minutes, ${difference.sec} seconds`;
+}, 1000)
