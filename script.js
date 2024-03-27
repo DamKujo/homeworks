@@ -98,3 +98,43 @@ console.log(elf);
 elf.createASpell('The ligth shot!');
 console.log(elf);
 elf.invocationSpell();
+
+// Блок Классы
+
+class Car {
+    #make;
+    #model;
+    #run;
+    constructor(make, model, run){
+        this.#make = make;
+        this.#model = model;
+        this._run = run;
+    }
+
+
+    set _run(km){
+        this.#run = km;
+        return 'changed'
+    }
+
+    get checkRun(){
+        return this.#run;
+    }
+
+
+    info(){
+        console.log(`Марка машины/модель: ${this.#make}/${this.#model}
+        Пробег: ${this.#run}kM`);
+    }
+}
+
+const mercedes = new Car('Mercedes', 'S-Class', 50000);
+console.log(mercedes)
+// получаем пробег 
+console.log(mercedes.checkRun)
+// метод info возвращает основную информацию
+console.log(mercedes.info())
+// через setter обновляем пробег
+mercedes._run = 90000;
+console.log(mercedes.checkRun);
+console.log(mercedes.info())
