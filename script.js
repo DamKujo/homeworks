@@ -56,3 +56,68 @@ function isValidAge(string){
     }
 }
 console.log(isValidAge('03/15/2009'));
+
+// Блок Принципы ООП в классах 
+class Character{
+    constructor(race, name, language){
+        this.race = race;
+        this.name = name;
+        this.language = language;
+    }
+
+    speak(){
+        console.log(`Меня зовут ${this.name}, мой родной язык ${this.language}, я отношусь к расе ${this.race}`);
+    }
+}
+const john = new Character('Human', 'Алекс', 'RU');
+
+class Orc extends Character{
+    constructor(race, name, language, weapon){
+        super(race, name, language);
+        this.weapon = weapon;
+    }
+
+    speak(){
+        console.log(`Чего тебе надо? Я ${this.name}, говорю на ${this.language}, естественно я ${this.race === 'Orc' ? 'огр'  : this.race}`);
+    }
+
+    #kick(){
+        console.log(`Получай по башке! Нанесён урон оружием ${this.weapon}`);
+    }
+
+    kick(){
+        if(this.race === 'Orc'){
+            this.#kick();
+        }
+    }
+}
+const shrek = new Orc('Orc', 'Шрек', 'ENG', `King Arthur's sword`);
+
+class Elf extends Character{
+    constructor(race, name, language, spell){
+        super(race, name, language);
+    }
+
+    speak(){
+        console.log(`Моё имя ${this.name}, приятно познакомиться! Родился я далеко от этих земель, от того и говорю на ${this.language}, я чистокровный ${this.race === 'Elf' ? 'Эльф'  : this.race}`);
+    }
+
+    #createSpell(x){
+        this.spell = x;
+    }
+
+    createASpell(spell){
+        if(this.race === 'Elf'){
+            this.#createSpell(spell);
+        }
+    }
+
+    invocationSpell(){
+        if(!this.spell){
+            alert('У вас отсутствуют заклинания! Вам необходимо их создать!');
+            return;
+        };
+        console.log(`${this.spell} is being used`);
+    }
+        
+}
