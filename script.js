@@ -121,3 +121,70 @@ class Elf extends Character{
     }
         
 }
+
+// Блок SOLID
+class Billing{
+    _amount;
+    constructor(){
+        this.amount = 0;
+    }
+
+    get amount(){
+        return this._amount;
+    }
+    set amount(a){
+        this._amount = a;
+    }
+
+    CalculateTotal(a){
+        this._amount = a;
+    }
+}
+
+class FixedBilling extends Billing{
+    constructor(_amount){
+        super(_amount);
+    }
+    CalculateTotal(){
+        return this._amount;
+    }
+}
+
+class HourBilling extends Billing{
+    constructor(_amount, hours){
+        super(_amount);
+        this.hours = Number(hours);
+    }
+
+    CalculateTotal(){
+        return this._amount * this.hours;
+    }
+}
+
+class ItemBilling extends Billing{
+    constructor(_amount, item){
+        super(_amount);
+        this.item = Number(item);
+    }
+    CalculateTotal(){
+        return this._amount * this.item;
+    }
+}
+const original = new Billing();
+original.amount = 5;
+console.log(original)
+
+const heir1 = new FixedBilling();
+heir1.amount = 1
+console.log(heir1.CalculateTotal());
+console.log(heir1)
+
+const heir2 = new HourBilling(0, 6);
+heir2.amount = 8
+console.log(heir2.CalculateTotal());
+console.log(heir2)
+
+const heir3 = new ItemBilling(0, 6);
+heir3.amount = 9
+console.log(heir3.CalculateTotal());
+console.log(heir3)
