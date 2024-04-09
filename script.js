@@ -7,21 +7,20 @@ let array = [
 
 console.log(array);
 
-let arrayV1 = array.map(el => el.id);
-let arrayV2 = [...new Set(array.map(el => el.id))];
-let isEqual = true;
-
-for(let i = 0; i < arrayV1.length; i++){
-    if(arrayV1[i] !== arrayV2[i]){
-        isEqual = false;
-    }
-    if(!isEqual){
-        // arrayNew.push(array[i]);
-        array.splice(array.indexOf(array[i]))
-    }
+let arr2 = array.filter(el => el.id === 1);
+let arr3 = [];
+for(let item of arr2){
+    arr3.push(Object.entries(item));
 }
-console.log(array);
-
+arr3 = arr3.concat(...arr3).splice(2);
+arr3 = [[...new Set(arr3.concat(...arr3).splice(4))].splice(0,2), [...new Set(arr3.concat(...arr3).splice(4))].splice(2)];
+let obj = {};
+for (let [key, value] of arr3){
+    obj[key] = value;
+}
+let newArray = array.filter(el => el.id === 2);
+newArray.push(obj);
+console.log(newArray);
 // Блок расчеты и math 
 function breakDice(dice){
     const allDice = [
@@ -43,3 +42,17 @@ function breakDice(dice){
 
 //В функцию передаем тип dice (от d4 до d20)
 console.log(breakDice('d16'));
+
+// Блок date
+
+function isValidAge(string){
+    const userValue = new Date(string).getTime();
+    const now = Date.now();
+    const validAge24 = new Date('03/14/2010').getTime(); // на 15 марта 2024, 14-летние считаются с этой даты
+    if(now - userValue >= now - validAge24 ){
+        return true;
+    } else {
+        return false;
+    }
+}
+console.log(isValidAge('03/15/2009'));
