@@ -202,3 +202,30 @@ heir3.amount = 9
 console.log(heir3.CalculateTotal());
 console.log(heir3)
 
+
+// Блок Асинхронный JS
+function req(){
+    const request = new XMLHttpRequest();
+    request.open('GET', 'https://pokeapi.co/api/v2/pokemon/ditto');
+    request.send();
+
+    request.addEventListener('load', function(){
+        const data = JSON.parse(this.responseText);
+        let arr = data.abilities.filter(el => el.is_hidden === false);
+        let nextUrl = arr[0].ability.url;
+        // Следующий запрос
+        const request = new XMLHttpRequest();
+        request.open('GET', nextUrl);
+        request.send();
+    
+        request.addEventListener('load', function(){
+            const data = JSON.parse(this.responseText);
+            let arr = data.effect_entries.filter(el => el.language.name === "en");
+            console.log(arr[0].effect)
+            // let nextUrl = arr[0].ability.url;
+        });
+    });
+}
+
+req();
+
