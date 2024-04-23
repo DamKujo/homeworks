@@ -270,3 +270,31 @@ findMe()
     console.log('В случае ошибки, попробуйте повтрить запрос')
 })
 
+// Блок Современный асинхронный JS
+function customRace(promises) {
+    return new Promise((resolve, reject) => {
+        promises.forEach(promise => {
+            promise.then(resolve).catch(reject);
+        });
+    });
+}
+
+const promise1 = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve('Promise 1 resolved');
+    }, 2000);
+});
+
+const promise2 = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve('Promise 2 resolved');
+    }, 3000);
+});
+
+customRace([promise1, promise2]).then(result => {
+    console.log(result); //вернется Promise 1 resolved
+}).catch(error => {
+    console.error(error);
+});
+
+
