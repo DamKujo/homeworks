@@ -254,3 +254,19 @@ getData('https://pokeapi.co/api/v2/pokemon/ditto', 'An error has occurred in the
     console.log(error.message)
 })
 
+// Блок Event Loop
+const findMe = () => {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    })
+}
+
+findMe()
+.then(({coords}) => {
+    document.write(coords.latitude + ' ' + coords.longitude);
+})
+.catch((error) => console.error(error))
+.finally(() =>{
+    console.log('В случае ошибки, попробуйте повтрить запрос')
+})
+
