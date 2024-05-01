@@ -67,7 +67,7 @@ const BaseCharacter = function(race, name, language){
     this.language = language;
 }
 
-console.log(isValidAge('03/15/2009'));
+// console.log(isValidAge('03/15/2009'));
 
 // Блок Принципы ООП в классах 
 class Character{
@@ -297,4 +297,31 @@ customRace([promise1, promise2]).then(result => {
     console.error(error);
 });
 
+//Блок Продвинутый DOM и Events
 
+let counter = document.querySelector('.count');
+
+let count = 0;
+let btn = document.getElementsByTagName('button');
+let mainBlock = document.querySelector('.mainblock')
+
+let prevId = null;
+
+mainBlock.addEventListener('click', (e) => {
+    let btnId = e.target.getAttribute('id');
+    if(prevId === null){
+        count++;
+        counter.innerHTML = count;
+        btn[btnId].innerHTML = 'Нажата!';
+        btn[btnId].classList.add('clicked');
+        prevId = btnId;
+    } else{
+        btn[prevId].classList.remove('clicked');
+        count++;
+        counter.innerHTML = count;
+        btn[prevId].innerHTML = 'Нажми на меня!';
+        btn[btnId].innerHTML = 'Нажата!';
+        btn[btnId].classList.add('clicked');
+        prevId = btnId;
+    }
+})
