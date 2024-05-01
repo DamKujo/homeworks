@@ -229,3 +229,28 @@ function req(){
 
 req();
 
+//Блок Promises
+function getData(url, error){
+    return fetch(url)
+    .then(response => {
+        if(!response.ok){
+            throw new Error(`${error}, status: ${response.status}`)
+        };
+        return response.json();
+    })
+};
+
+getData('https://pokeapi.co/api/v2/pokemon/ditto', 'An error has occurred in the first req')
+.then(({abilities}) => {
+    let arr = abilities.filter(el => el.is_hidden === false);
+    let nextUrl = arr[0].ability.url;
+    return getData(nextUrl, 'An error has occured in the second req')
+})
+.then(({effect_entries}) => {
+    let arr = effect_entries.filter(el => el.language.name === "en");
+    console.log(arr[0].effect);
+})
+.catch(error => {
+    console.log(error.message)
+})
+
