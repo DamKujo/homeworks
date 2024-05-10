@@ -1,0 +1,33 @@
+{
+  "name": "simple-app",
+  "version": "1.0.0",
+  "description": "the classes are working ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server",
+    "build": "rollup -c -o bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamKujo/homeworks.git"
+  },
+  "keywords": [
+    "homework"
+  ],
+  "author": "Damir Musagitov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamKujo/homeworks/issues"
+  },
+  "homepage": "https://github.com/DamKujo/homeworks#readme",
+  "dependencies": {
+    "live-server": "^1.2.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "devDependencies": {
+    "rollup": "^4.17.2"
+  }
+}
