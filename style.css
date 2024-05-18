@@ -1,0 +1,33 @@
+.mainblock{
+    display: flex;
+}
+
+.button{
+    align-items: center;
+    margin: 0 auto;
+    width: 200px;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #333;
+    border-radius: 10px;
+    text-align: center;
+    transition: .2s ease-in-out;
+
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    cursor: pointer;
+}
+
+.clicked{
+    background-color: darkgray;
+    color: aliceblue;
+    border: 2px dotted #fff;
+}
+
+.count{
+    margin-top: 50px;
+    text-align: center;
+    color: #333;
+}
